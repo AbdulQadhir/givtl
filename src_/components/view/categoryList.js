@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {TextInput, Text, ListView, View, ActivityIndicator, TouchableOpacity, FlatList, Image} from 'react-native';
 import { connect } from "react-redux";
 import { getCategoryList } from "./action";
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 

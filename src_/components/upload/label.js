@@ -6,7 +6,7 @@ export default class App extends React.Component {
     return (
 
             <View>
-                  <Text style={{fontSize:20,padding:8}}>{this.props.label}</Text>                       
+                  <Text style={{fontSize:15, fontWeight:"bold", padding:8, color:"#EF0A05"}}>{this.props.label}</Text>                       
           </View>  
   );
   }
