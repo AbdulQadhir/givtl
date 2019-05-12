@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, CheckBox, View, ScrollView, TextInput} from 'react-native';
+import {StyleSheet, Text, CheckBox, View, ScrollView, TextInput,Image} from 'react-native';
 import TALabel from './label';
 import TAPicker from './picker';
 import GButton from './btnRed';
@@ -10,7 +10,7 @@ class UploadFrm extends Component {
   
   static navigationOptions = ({ navigation }) => {
       return {
-      headerTitle: (<View style={{ flex:1, alignItems:"center" }}><Text style={{ textAlign:"center", color:"#FFF", fontSize: 18, fontWeight:"bold" }} >Post Gift</Text></View>),
+      headerTitle: (<View style={{ flex:1, alignItems:"center" }}><Text style={{ textAlign:"center", color:"#FFF", fontSize: 18, fontWeight:"bold" }} >Post a Gift</Text></View>),
       }
   };
 
@@ -20,10 +20,18 @@ class UploadFrm extends Component {
 
   render() {
     return (
-      <ScrollView > 
+      <ScrollView >  
+
             <View style={styles.box}>
+                <View style={{
+    alignItems:'center',
+    justifyContent:'center'
+    }}>
+                  <Image style={styles.img} source={require("../images/add_image.jpg")} />
+                </View>
+
                 <TALabel label="Country"/> 
-                <TAPicker/>
+                <TAPicker/> 
                 <TALabel label="City"/> 
                 <TAPicker/>
                 <TALabel label="Category"/> 
@@ -64,5 +72,11 @@ export default connect(
 const styles = StyleSheet.create({
   box:{
     padding:10,
+  },
+  img:{
+    height:330,
+    width:330,
+    borderRadius:10,
+    borderWidth:1,
   },
 });
