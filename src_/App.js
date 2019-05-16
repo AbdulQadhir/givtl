@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { SafeAreaView } from "react-navigation";
-import Navigator from "./navigator/view_post_stack";
+import Navigator from "./navigator/root";
 import { StateComponent } from "./components/styled/components";
 import initStore from "./store";
 import { StatusBar, View, Platform } from "react-native";

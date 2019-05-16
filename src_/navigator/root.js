@@ -1,6 +1,6 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
-import ViewPostStack from "./view_posts_stack";
+import ViewPostStack from "./view_post_stack";
 import UploadPost from "../components/upload";
 
 const root = createStackNavigator({
