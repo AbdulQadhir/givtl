@@ -1,14 +1,26 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 
 import ViewPostStack from "./view_post_stack";
-import UploadPost from "../components/upload";
+import UploadPost from "./upoad_post_stack";
+import Profile from "./profile_stack";
+import Notification from "./notification_stack";
+import Chat from "./chat_stack";
 
-const root = createStackNavigator({
-  UploadPost: {
+const root = createBottomTabNavigator({
+  Home: {
+    screen: ViewPostStack
+  },
+  Notification: {
+    screen: Notification
+  },
+  Upload: {
     screen: UploadPost
   },
-  ViewPostStack: {
-    screen: ViewPostStack
+  Chat: {
+    screen: Chat
+  },
+  Profile: {
+    screen: Profile
   }
 });
 
