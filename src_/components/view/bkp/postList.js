@@ -13,7 +13,7 @@ const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 class ListFrm extends Component {
 
   componentDidMount = () => {
-  //  this.props.getPostList("");
+    this.props.getPostList("");
   };
   constructor(props){
     super(props);
@@ -21,12 +21,7 @@ class ListFrm extends Component {
       showSearch : false,
       showSort : false,
       filter : "",
-      sort: "Date",
-      data : [
-              {id_post: 1, place:"Dubai", price:"120", title:"Reynold Pen", description:"New Model",date:"10/4/2019"},
-              {id_post: 2, place:"Dubai", price:"140", title:"Folder", description:"New Model",date:"11/4/2019"},
-              {id_post: 3, place:"Dubai", price:"150", title:"File", description:"New Model",date:"14/4/2019"},
-            ]
+      sort: "Date"
     }
   }
 
@@ -79,16 +74,24 @@ class ListFrm extends Component {
         }
 
         
+
+        {(this.props.postList.loading || !this.props.postList.success) ? (
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>
+        </View>
+     ) : (
      <View>
        <ListView
       rightOpenValue={-75}
-      dataSource={ds.cloneWithRows(this.state.data)}
+      dataSource={ds.cloneWithRows(this.props.postList.data)}
       renderRow={data =>
         <TouchableOpacity onPress={() => this.props.navigation.navigate("PostDt", { id_post : data.id_post })} >
           <View style={styles.box}><GImageDescription place={data.place} price={data.price} name={data.title} date={data.date}  description={data.description}  /></View><GBorder/></TouchableOpacity>
       }
     />
     </View>
+    )
+     }
 
       </View>
     );

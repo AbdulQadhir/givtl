@@ -45,7 +45,7 @@ export default class App extends React.Component {
                       <Text style={{fontSize:18,paddingTop:7, textAlign:"center"}}>{this.props.description}</Text>
                     </View> 
                       <View style={styles.box}>
-                        <Text style={{fontWeight:'bold',fontSize:20}}>AED {this.props.price}1,100</Text>
+                        <Text style={{fontWeight:'bold',fontSize:20}}>AED {this.props.price}</Text>
                         <View >
                           <Text style={{textAlign:'right',fontSize:18,paddingBottom:5}}>{this.props.date}</Text>
                           <Text style={{textAlign:'right',fontSize:18,paddingBottom:5}}>{this.props.place}</Text>

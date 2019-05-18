@@ -13,7 +13,11 @@ class DtFrm extends Component {
   };
 
   render() {
-    postDt = {id_post: 1, place:"Dubai", price:"120", title:"Reynold Pen", description:"New Model",date:"10/4/2019"};
+    const id_post = this.props.navigation.state.params.id_post;
+    var postDtArr = this.props.postList.data.filter(function (el) {
+      return el.id_post == id_post;
+    });
+    postDt = postDtArr.length>0 ? postDtArr[0] : null;
     return (
       <ScrollView>   
         <GImageDetails  name={postDt.title} date={postDt.date} description={postDt.description} place={postDt.place} />

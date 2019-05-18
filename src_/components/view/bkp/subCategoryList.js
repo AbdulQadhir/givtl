@@ -12,11 +12,6 @@ class CatListFrm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      data : [
-        {id: 1, name: "Reynolds"},
-        {id: 2, name: "Hero"},
-        {id: 3, name: "Lexi"}
-      ]
     }
   }
   
@@ -43,8 +38,8 @@ class CatListFrm extends Component {
 };
 
   componentDidMount = () => {
-  //  var id_category = this.props.navigation.state.params.id_category;
-  //  this.props.getSubCategoryList(id_category);
+    var id_category = this.props.navigation.state.params.id_category;
+    this.props.getSubCategoryList(id_category);
   };
 
   render() {
@@ -67,10 +62,15 @@ class CatListFrm extends Component {
             </TouchableOpacity>
         </View>
        
+        {(this.props.subCategoryList.loading || !this.props.subCategoryList.success) ? (
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>                            
+        </View>
+     ) : (
      <View>
     <ListView
       rightOpenValue={-75}
-      dataSource={ds.cloneWithRows(this.state.data)}
+      dataSource={ds.cloneWithRows(this.props.subCategoryList.data)}
       renderSeparator={() => <View style={{ height:1, backgroundColor:"#ABB2B9" }} />}
       renderRow={data =>
         <TouchableOpacity
@@ -82,6 +82,8 @@ class CatListFrm extends Component {
       }
     />
     </View>
+    )
+     }
 
       </View>
     )

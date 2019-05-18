@@ -17,27 +17,18 @@ class CatListFrm extends Component {
       section_key: "1",
       section: "Work Gifts",
       section_img: require("../images/section1.png"),
-      data : [
-              {id: 1, name: "Pen"},
-              {id: 2, name: "Bag"},
-              {id: 3, name: "Folder"}
-            ]
     }
   }
 
-
+  
   static navigationOptions = ({ navigation }) => {
     return {
-    headerTitle: (<View style={{ flex:1, alignItems:"center", justifyContent: "center"}}>
-                    <View style={{ flexDirection: "row", justifyContent: "center" }} >
-                      <Text style={{ textAlign:"center", color:"#FFF", fontSize: 18, fontWeight:"bold", padding:3 }} >Givtly</Text>
-                    </View>
-                  </View>),
+      headerTitle: <TextInput />,
     }
 };
 
   componentDidMount = () => {
-  //  this.props.getCategoryList("1");
+    this.props.getCategoryList("1");
   };
 
   render() {
@@ -65,10 +56,15 @@ class CatListFrm extends Component {
           )
         }
         />
+        {(this.props.categoryList.loading || !this.props.categoryList.success) ? (
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>                            
+        </View>
+     ) : (
      <View>
        <ListView
       rightOpenValue={-75}
-      dataSource={ds.cloneWithRows(this.state.data)}
+      dataSource={ds.cloneWithRows(this.props.categoryList.data)}
       renderSeparator={() => <View style={{ height:1, backgroundColor:"#ABB2B9" }} />}
       renderRow={data =>
         <TouchableOpacity
@@ -80,6 +76,8 @@ class CatListFrm extends Component {
       }
     />
     </View>
+    )
+     }
 
       </View>
     )
